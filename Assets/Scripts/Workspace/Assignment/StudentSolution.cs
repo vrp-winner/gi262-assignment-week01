@@ -131,51 +131,134 @@ namespace Assignment
 
         public void Lv01_CheckNumberSign(int number)
         {
-            // TODO: Implement logic to determine sign
-            // Example: Debug.Log("Positive");
-            throw new System.NotImplementedException();
+            if (number > 0)
+            {
+                Debug.Log("Positive");
+            }
+            else if (number < 0)
+            {
+                Debug.Log("Negative");
+            }
+            else
+            {
+                Debug.Log("Zero");
+            }
         }
 
         public void Lv02_GetDayName(int day)
         {
-            // TODO: Implement logic to return day name
-            // Example: Debug.Log("Monday");
-            throw new System.NotImplementedException();
+            switch (day)
+            {
+                case 1: Debug.Log("Monday"); break;
+                case 2: Debug.Log("Tuesday"); break;
+                case 3: Debug.Log("Wednesday"); break;
+                case 4: Debug.Log("Thursday"); break;
+                case 5: Debug.Log("Friday"); break;
+                case 6: Debug.Log("Saturday"); break;
+                case 7: Debug.Log("Sunday"); break;
+                default: Debug.Log("Invalid day"); break;
+            }
         }
 
         public void Lv03_ValidatePassword(string inputPassword, string correctPassword)
         {
-            // TODO: Implement password validation logic
-            // Example: Debug.Log("True");
-            throw new System.NotImplementedException();
+            if (inputPassword == correctPassword)
+            {
+                Debug.Log("True");
+            }
+            else
+            {
+                Debug.Log("False");
+            }
         }
 
         public void Lv04_GetGrade(int score)
         {
-            // TODO: Implement logic to return grade
-            // Example: Debug.Log("A");
-            throw new System.NotImplementedException();
+            if (score >= 80)
+            {
+                Debug.Log("A");
+            }
+            else if (score >= 70)
+            {
+                Debug.Log("B");
+            }
+            else if (score >= 60)
+            {
+                Debug.Log("C");
+            }
+            else if (score >= 50)
+            {
+                Debug.Log("D");
+            }
+            else
+            {
+                Debug.Log("F");
+            }
         }
 
         public void Lv05_IsLeapYear(int year)
         {
-            // TODO: Implement leap year check logic
-            // Example: Debug.Log("True");
-            throw new System.NotImplementedException();
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+            {
+                Debug.Log("True");
+            }
+            else
+            {
+                Debug.Log("False");
+            }
         }
 
         public void Lv06_Calculate(double num1, char op, double num2)
         {
-            // TODO: Implement calculator logic
-            // Example: Debug.Log("Result: 42");
-            throw new System.NotImplementedException();
+            switch (op)
+            {
+                case '+':
+                    Debug.Log("Result: " + (num1 + num2));
+                    break;
+                case '-':
+                    Debug.Log("Result: " + (num1 - num2));
+                    break;
+                case '*':
+                    Debug.Log("Result: " + (num1 * num2));
+                    break;
+                case '/':
+                    if (num2 != 0)
+                    {
+                        Debug.Log("Result: " + (num1 / num2));
+                    }
+                    else
+                    {
+                        Debug.Log("Error: Cannot divide by zero.");
+                    }
+                    break;
+                default:
+                    Debug.Log("Invalid operator. Please use +, -, *, or /.");
+                    break;
+            }
         }
 
         public void Lv07_GetSeason(int month)
         {
-            // TODO: Implement logic to return season
-            // Example: Debug.Log("Summer");
-            throw new System.NotImplementedException();
+            if (month == 12 || month == 1 || month == 2)
+            {
+                Debug.Log("It's Winter.");
+            }
+            else if (month >= 3 && month <= 5)
+            {
+                Debug.Log("It's Spring.");
+            }
+            else if (month >= 6 && month <= 8)
+            {
+                Debug.Log("It's Summer.");
+            }
+            else if (month >= 9 && month <= 11)
+            {
+                Debug.Log("It's Fall.");
+            }
+            else
+            {
+                Debug.Log("Invalid month number. Please enter a number between 1 and 12.");
+            }
         }
 
         #endregion
