@@ -267,26 +267,129 @@ namespace Assignment
 
         public void Ex01_PurchasingSystemExample(int quantity, int price, int payment)
         {
-            throw new System.NotImplementedException();
+            if (quantity <= 0)
+            {
+                AssignmentDebugConsole.Log("สินค้าหมด");
+                return;
+            }
+    
+            int totalCost = quantity * price;
+    
+            if (payment < totalCost)
+            {
+                AssignmentDebugConsole.Log("คุณมีเงินไม่พอ");
+                return;
+            }
+    
+            AssignmentDebugConsole.Log("คุณได้รับสินค้าแล้ว");
+    
+            int change = payment - totalCost;
+            if (change > 0)
+            {
+                AssignmentDebugConsole.Log($"คุณได้รับเงินทอน {change} บาท");
+            }
         }
 
         public void Ex02_RockPaperScissorsExample(int userChoice, int computerChoice)
         {
-            throw new System.NotImplementedException();
+            if (userChoice < 0 || userChoice > 2)
+            {
+                AssignmentDebugConsole.Log("กรุณาเลือกเป็นตัวเลขที่ถูกต้อง");
+                return;
+            }
+    
+            if (userChoice == computerChoice)
+            {
+                AssignmentDebugConsole.Log("เสมอ");
+            }
+            else if ((userChoice == 0 && computerChoice == 2) ||
+                     (userChoice == 1 && computerChoice == 0) ||
+                     (userChoice == 2 && computerChoice == 1))
+            {
+                AssignmentDebugConsole.Log("คุณชนะ!");
+            }
+            else
+            {
+                AssignmentDebugConsole.Log("คุณแพ้!");
+            }
         }
 
         public void Ex03_CalculateWeaponDamage(string weaponType, int baseDamage)
         {
-            // TODO: Add your implementation here
-            // Example: AssignmentDebugConsole.Log("result as string");
-            throw new System.NotImplementedException();
+            string normalizedWeaponType = weaponType.ToLower();
+            double multiplier = 1.0;
+    
+            switch (normalizedWeaponType)
+            {
+                case "sword":
+                    multiplier = 1.3;
+                    break;
+                case "axe":
+                    multiplier = 1.4;
+                    break;
+                case "bow":
+                    multiplier = 1.2;
+                    break;
+                case "staff":
+                    multiplier = 1.5;
+                    break;
+                case "dagger":
+                    multiplier = 1.1;
+                    break;
+                default:
+                    multiplier = 1.0;
+                    break;
+            }
+    
+            int finalDamage = (int)(baseDamage * multiplier);
+            AssignmentDebugConsole.Log(finalDamage.ToString());
         }
 
         public void Ex04_DeterminePlayerRank(int score, int completionTime)
         {
-            // TODO: Add your implementation here
-            // Example: AssignmentDebugConsole.Log("result as string");
-            throw new System.NotImplementedException();
+            if (score < 0 || completionTime < 0)
+            {
+                AssignmentDebugConsole.Log("Invalid score or time");
+                return;
+            }
+    
+            string rank;
+            int baseCoins = 0;
+    
+            if (score >= 8000)
+            {
+                rank = "Gold Rank";
+                baseCoins = 100;
+            }
+            else if (score >= 6000)
+            {
+                rank = "Silver Rank";
+                baseCoins = 75;
+            }
+            else if (score >= 4000)
+            {
+                rank = "Bronze Rank";
+                baseCoins = 50;
+            }
+            else
+            {
+                rank = "Participation Rank";
+                baseCoins = 25;
+            }
+    
+            int timeBonus = 0;
+            if (completionTime <= 30)
+            {
+                timeBonus = 25;
+            }
+            else if (completionTime <= 60)
+            {
+                timeBonus = 10;
+            }
+    
+            int totalCoins = baseCoins + timeBonus;
+    
+            AssignmentDebugConsole.Log($"{rank} - {totalCoins} coins earned!");
         }
 
         #endregion
