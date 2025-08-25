@@ -1,5 +1,3 @@
-using AssignmentSystem.Services;
-using UnityEngine;
 using Debug = AssignmentSystem.Services.AssignmentDebugConsole;
 
 namespace Assignment
@@ -14,7 +12,6 @@ namespace Assignment
             {
                 Debug.Log("You can get in");
             }
-
             Debug.Log("Crack Crack!!!!");
         }
 
@@ -64,7 +61,6 @@ namespace Assignment
             {
                 Debug.Log("My Number 8 > < 12");
             }
-
             if (number > 8 || number < 12)
             {
                 Debug.Log("My Number or 8 || 12");
@@ -95,7 +91,7 @@ namespace Assignment
             {
                 Debug.Log("Too high! Try again.");
             }
-            else
+            else if (guessingNumber == randomNumber)
             {
                 Debug.Log("Congratulations! We are same mind.");
             }
@@ -198,7 +194,15 @@ namespace Assignment
 
         public void Lv05_IsLeapYear(int year)
         {
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+            if (year % 400 == 0)
+            {
+                Debug.Log("True");
+            }
+            else if (year % 100 == 0)
+            {
+                Debug.Log("False");
+            }
+            else if (year % 4 == 00)
             {
                 Debug.Log("True");
             }
@@ -212,15 +216,9 @@ namespace Assignment
         {
             switch (op)
             {
-                case '+':
-                    Debug.Log("Result: " + (num1 + num2));
-                    break;
-                case '-':
-                    Debug.Log("Result: " + (num1 - num2));
-                    break;
-                case '*':
-                    Debug.Log("Result: " + (num1 * num2));
-                    break;
+                case '+': Debug.Log("Result: " + (num1 + num2)); break;
+                case '-': Debug.Log("Result: " + (num1 - num2)); break;
+                case '*': Debug.Log("Result: " + (num1 * num2)); break;
                 case '/':
                     if (num2 != 0)
                     {
@@ -267,26 +265,25 @@ namespace Assignment
 
         public void Ex01_PurchasingSystemExample(int quantity, int price, int payment)
         {
-            if (quantity <= 0)
+            if (quantity > 0)
             {
-                AssignmentDebugConsole.Log("สินค้าหมด");
-                return;
+                if (payment >= price)
+                {
+                    Debug.Log("คุณได้รับสินค้าแล้ว");
+                    int change = payment - price;
+                    if (change > 0)
+                    {
+                        Debug.Log($"คุณได้รับเงินทอน {change} บาท");
+                    }
+                }
+                else
+                {
+                    Debug.Log("คุณมีเงินไม่พอ");
+                }
             }
-    
-            int totalCost = quantity * price;
-    
-            if (payment < totalCost)
+            else
             {
-                AssignmentDebugConsole.Log("คุณมีเงินไม่พอ");
-                return;
-            }
-    
-            AssignmentDebugConsole.Log("คุณได้รับสินค้าแล้ว");
-    
-            int change = payment - totalCost;
-            if (change > 0)
-            {
-                AssignmentDebugConsole.Log($"คุณได้รับเงินทอน {change} บาท");
+                Debug.Log("สินค้าหมด");
             }
         }
 
@@ -294,23 +291,22 @@ namespace Assignment
         {
             if (userChoice < 0 || userChoice > 2)
             {
-                AssignmentDebugConsole.Log("กรุณาเลือกเป็นตัวเลขที่ถูกต้อง");
+                Debug.Log("กรุณาเลือกเป็นตัวเลขที่ถูกต้อง");
                 return;
             }
-    
             if (userChoice == computerChoice)
             {
-                AssignmentDebugConsole.Log("เสมอ");
+                Debug.Log("เสมอ");
             }
             else if ((userChoice == 0 && computerChoice == 2) ||
                      (userChoice == 1 && computerChoice == 0) ||
                      (userChoice == 2 && computerChoice == 1))
             {
-                AssignmentDebugConsole.Log("คุณชนะ!");
+                Debug.Log("คุณชนะ!");
             }
             else
             {
-                AssignmentDebugConsole.Log("คุณแพ้!");
+                Debug.Log("คุณแพ้!");
             }
         }
 
@@ -321,41 +317,27 @@ namespace Assignment
     
             switch (normalizedWeaponType)
             {
-                case "sword":
-                    multiplier = 1.3;
-                    break;
-                case "axe":
-                    multiplier = 1.4;
-                    break;
-                case "bow":
-                    multiplier = 1.2;
-                    break;
-                case "staff":
-                    multiplier = 1.5;
-                    break;
-                case "dagger":
-                    multiplier = 1.1;
-                    break;
-                default:
-                    multiplier = 1.0;
-                    break;
+                case "sword": multiplier = 1.3; break;
+                case "axe": multiplier = 1.4; break;
+                case "bow": multiplier = 1.2; break;
+                case "staff": multiplier = 1.5; break;
+                case "dagger": multiplier = 1.1; break;
+                default: multiplier = 1.0; break;
             }
-    
-            int finalDamage = (int)(baseDamage * multiplier);
-            AssignmentDebugConsole.Log(finalDamage.ToString());
+            int totalDamage = (int)(baseDamage * multiplier);
+            Debug.Log(totalDamage.ToString());
         }
 
         public void Ex04_DeterminePlayerRank(int score, int completionTime)
         {
             if (score < 0 || completionTime < 0)
             {
-                AssignmentDebugConsole.Log("Invalid score or time");
+                Debug.Log("Invalid score or time");
                 return;
             }
-    
+            
             string rank;
-            int baseCoins = 0;
-    
+            int baseCoins;
             if (score >= 8000)
             {
                 rank = "Gold Rank";
@@ -388,8 +370,7 @@ namespace Assignment
             }
     
             int totalCoins = baseCoins + timeBonus;
-    
-            AssignmentDebugConsole.Log($"{rank} - {totalCoins} coins earned!");
+            Debug.Log($"{rank} - {totalCoins} coins earned!");
         }
 
         #endregion
